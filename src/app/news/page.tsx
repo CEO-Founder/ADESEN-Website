@@ -10,9 +10,18 @@ export const metadata: Metadata = {
     "Programme updates and stories from ADESEN's work in Gatsibo District, Rwanda.",
 };
 
-// Placeholder structure for future posts. Once real updates are ready,
-// replace this array (or wire it to a CMS/markdown source) and each
-// item will automatically render as a card below.
+// To publish an update, add an object to this array — each item renders
+// automatically as a card below, newest first. No fake/example post is
+// seeded here deliberately (this is a live NGO site; an invented "first
+// update" would misrepresent something that didn't happen). Copy the
+// shape below when you have a real one to add:
+//
+// {
+//   slug: "gatsibo-ecd-centre-opens",
+//   title: "First ECD centre opens its doors in Gatsibo",
+//   date: "2026-09-15",
+//   excerpt: "One sentence summarising what happened and why it matters.",
+// }
 type NewsItem = {
   slug: string;
   title: string;

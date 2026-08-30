@@ -77,33 +77,30 @@ export function Footer() {
           ) : null}
         </div>
 
-        <div>
-          <h3 className="text-sm font-semibold uppercase tracking-wide text-gold">
-            Follow ADESEN
-          </h3>
-          <div className="mt-4 flex gap-3">
-            {[
-              { href: org.social.facebook, label: "Facebook", short: "f" },
-              { href: org.social.x, label: "X (Twitter)", short: "x" },
-              { href: org.social.linkedin, label: "LinkedIn", short: "in" },
-              { href: org.social.instagram, label: "Instagram", short: "ig" },
-            ].map((s) => (
-              <a
-                key={s.label}
-                href={s.href}
-                aria-label={s.label}
-                className="flex h-9 w-9 items-center justify-center rounded-full bg-white/10 text-xs font-bold uppercase hover:bg-white/20"
-              >
-                {s.short}
-              </a>
-            ))}
+        {org.social.isPlaceholder ? null : (
+          <div>
+            <h3 className="text-sm font-semibold uppercase tracking-wide text-gold">
+              Follow ADESEN
+            </h3>
+            <div className="mt-4 flex gap-3">
+              {[
+                { href: org.social.facebook, label: "Facebook", short: "f" },
+                { href: org.social.x, label: "X (Twitter)", short: "x" },
+                { href: org.social.linkedin, label: "LinkedIn", short: "in" },
+                { href: org.social.instagram, label: "Instagram", short: "ig" },
+              ].map((s) => (
+                <a
+                  key={s.label}
+                  href={s.href}
+                  aria-label={s.label}
+                  className="flex h-9 w-9 items-center justify-center rounded-full bg-white/10 text-xs font-bold uppercase hover:bg-white/20"
+                >
+                  {s.short}
+                </a>
+              ))}
+            </div>
           </div>
-          {org.social.isPlaceholder ? (
-            <p className="mt-3 text-xs italic text-white/40">
-              Social links are placeholders until accounts are created.
-            </p>
-          ) : null}
-        </div>
+        )}
       </Container>
 
       <div className="border-t border-white/10 py-6">
