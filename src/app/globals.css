@@ -1,0 +1,67 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #1f2937;
+
+  /* Self-hosted via @fontsource (see layout.tsx imports) */
+  --font-heading: "Poppins", ui-sans-serif, system-ui, sans-serif;
+  --font-body: "Inter", ui-sans-serif, system-ui, sans-serif;
+
+  /* ADESEN brand palette */
+  --color-forest: #0b4d3a;
+  --color-forest-dark: #073a2b;
+  --color-forest-light: #e6efe9;
+  --color-navy: #0f2a4a;
+  --color-navy-light: #1c3a5e;
+  --color-gold: #e0a526;
+  --color-gold-dark: #c48a16;
+  --color-sage: #7fa98a;
+  --color-ink: #1f2937;
+  --color-cream: #f7f8f5;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+
+  --color-forest: var(--color-forest);
+  --color-forest-dark: var(--color-forest-dark);
+  --color-forest-light: var(--color-forest-light);
+  --color-navy: var(--color-navy);
+  --color-navy-light: var(--color-navy-light);
+  --color-gold: var(--color-gold);
+  --color-gold-dark: var(--color-gold-dark);
+  --color-sage: var(--color-sage);
+  --color-ink: var(--color-ink);
+  --color-cream: var(--color-cream);
+
+  --font-sans: var(--font-body);
+  --font-heading: var(--font-heading);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-body), Arial, Helvetica, sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading), Arial, Helvetica, sans-serif;
+}
+
+/* Smooth scroll for in-page anchors (e.g. skip link) */
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
