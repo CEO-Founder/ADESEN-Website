@@ -25,9 +25,6 @@ export default function Home() {
         />
         <Container className="relative grid gap-12 py-20 sm:py-28 lg:grid-cols-2 lg:items-center">
           <div>
-            <p className="mb-4 inline-block rounded-full bg-white/10 px-4 py-1 text-sm font-semibold text-gold">
-              Gatsibo District, Eastern Province, Rwanda · 2026–2028
-            </p>
             <h1 className="text-4xl font-extrabold leading-tight tracking-tight sm:text-5xl">
               {org.tagline}
             </h1>
