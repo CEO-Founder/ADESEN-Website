@@ -11,7 +11,7 @@ Built with Next.js (App Router) + TypeScript + Tailwind CSS v4, following the te
 - Client-side validated contact form (React Hook Form + Zod) — see "Wiring up the contact form" below
 - SEO metadata, Open Graph tags, `sitemap.xml`, `robots.txt`
 - Self-hosted fonts (Poppins for headings, Inter for body) via `@fontsource` — no external font requests, so the site never depends on Google Fonts being reachable
-- Branded placeholder graphics everywhere a real photo will eventually go (see "Replacing placeholder images")
+- Real, freely-licensed photography throughout (see `public/images/CREDITS.md`), swappable for ADESEN's own photos at any time via `SiteImage`
 - Analytics slot ready for Google Analytics (see below)
 
 All copy and figures (10,000+ beneficiaries, 1,000 households, 2 ECD centres, 3,000 youth, 100,000 trees, RWF 630 million budget, core values, Theory of Change, NST2/Vision 2050/SDG alignment) are drawn directly from the official ADESEN Action Plan 2026–2028 and Annual Report 2026. All site content lives in one place for easy editing: `src/lib/data/site.ts` and `src/lib/data/programmes.ts`.
@@ -35,11 +35,10 @@ npm run lint    # ESLint
 
 1. **Contact details.** `src/lib/data/site.ts` has placeholder email/phone (`info@adesen.rw`, `+250 7XX XXX XXX`) — no confirmed contact details were found in the source documents. While `contact.isPlaceholder` is `true`, the site shows "to be confirmed" instead of a live `mailto:`/`tel:` link, so nobody can reach a fake address. Update the `contact` object and flip `isPlaceholder` to `false` once you have real details.
 2. **Social media links.** The `social` object in `src/lib/data/site.ts` still points to `#` placeholders, so the footer's "Follow ADESEN" block stays hidden (`org.social.isPlaceholder`) until real accounts exist and the URLs are filled in.
-3. **Replacing placeholder images.** Every photo slot renders as a branded gradient placeholder (`src/components/ui/PlaceholderImage.tsx`) labelled with what should go there (e.g. "community members in Gatsibo District"). This avoids shipping unlicensed or mismatched stock photos. To replace one:
-   - Source a real ADESEN photo, or a properly licensed stock photo (Unsplash and Pexels both allow free commercial use — search their sites directly for terms like "rural Rwanda community", "African classroom", "tree planting Rwanda", "Rwandan youth").
-   - Save it to `public/images/` and swap the `<PlaceholderImage ... />` usage for a Next.js `<Image src="/images/your-photo.jpg" alt="..." fill className="rounded-2xl object-cover" />` inside the same wrapper `div`.
 
 The logo is done: `src/components/layout/Logo.tsx` renders ADESEN's real emblem (`public/images/adesen-logo.png`), recreated from the org's Word/PDF branding file with the "ADESEN" wordmark redrawn in place of a leftover "CRD" placeholder from the source template. The favicon and Open Graph share image still use a generated leaf mark instead (the real logo's source resolution is too low to scale up cleanly there).
+
+Photography is done too: every slot that was a gradient placeholder now renders a real, freely-licensed photo via `src/components/ui/SiteImage.tsx` (see `public/images/CREDITS.md` for sources). Two slots that originally implied a specific ADESEN team/office/officials had their captions reworded to generic language first, since a stock photo can't honestly stand in for something that specific — swap in real ADESEN photography for those (and any other slot) whenever it exists, following the same `<SiteImage src="/images/..." alt="..." />` pattern.
 
 ## Wiring up the contact form
 
@@ -73,7 +72,7 @@ src/
   app/                    Routes (App Router) — one folder per page
   components/
     layout/               Header, Footer, Logo, SkipLink
-    ui/                   Shared primitives (Button, Section, StatCard, PlaceholderImage, Reveal, ...)
+    ui/                   Shared primitives (Button, Section, StatCard, SiteImage, Reveal, ...)
     ContactForm.tsx
     ProgrammeCard.tsx
     Analytics.tsx

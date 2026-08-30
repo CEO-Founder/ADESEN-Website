@@ -1,11 +1,11 @@
 import Link from "next/link";
-import { ArrowRight, Users2, TreePine, Handshake } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 import { Section } from "@/components/ui/Section";
 import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { StatCard } from "@/components/ui/StatCard";
-import { PlaceholderImage } from "@/components/ui/PlaceholderImage";
+import { SiteImage } from "@/components/ui/SiteImage";
 import { Reveal } from "@/components/ui/Reveal";
 import { ProgrammeCard } from "@/components/ProgrammeCard";
 import { keyStats, org, mission, strategicAlignment } from "@/lib/data/site";
@@ -47,12 +47,12 @@ export default function Home() {
             </div>
           </div>
           <Reveal>
-            <PlaceholderImage
-              label="community members in Gatsibo District, Rwanda"
-              variant="gold"
-              icon={Handshake}
+            <SiteImage
+              src="/images/hero-community.jpg"
+              alt="Community members in Gatsibo District, Rwanda"
               aspect="aspect-[5/4]"
               className="shadow-2xl"
+              priority
             />
           </Reveal>
         </Container>
@@ -84,10 +84,9 @@ export default function Home() {
             </Link>
           </Reveal>
           <Reveal delay={0.1}>
-            <PlaceholderImage
-              label="ADESEN team working with a Gatsibo community"
-              variant="forest"
-              icon={Users2}
+            <SiteImage
+              src="/images/community-engagement.jpg"
+              alt="Community engagement in Gatsibo District"
             />
           </Reveal>
         </div>
@@ -115,10 +114,9 @@ export default function Home() {
       <Section>
         <div className="grid gap-10 lg:grid-cols-2 lg:items-center">
           <Reveal>
-            <PlaceholderImage
-              label="tree-planting and agroforestry activity"
-              variant="sage"
-              icon={TreePine}
+            <SiteImage
+              src="/images/tree-planting.jpg"
+              alt="Tree-planting and agroforestry activity"
             />
           </Reveal>
           <Reveal delay={0.1}>

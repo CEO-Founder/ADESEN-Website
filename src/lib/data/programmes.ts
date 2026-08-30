@@ -6,6 +6,7 @@ export type Programme = {
   name: string;
   shortName: string;
   icon: LucideIcon;
+  image: string;
   tagline: string;
   rationale: string;
   activities: string[];
@@ -22,6 +23,7 @@ export const programmes: Programme[] = [
     name: "Health & Socio-Economic Development",
     shortName: "Health & Livelihoods",
     icon: HeartPulse,
+    image: "/images/programme-health.jpg",
     tagline: "Healthy, food-secure households with diversified income.",
     rationale:
       "Healthy, food-secure households with diversified income are the foundation of community resilience. This component pairs preventive health and nutrition with livelihood support.",
@@ -51,6 +53,7 @@ export const programmes: Programme[] = [
     name: "Education & Skills Development",
     shortName: "Education & Skills",
     icon: GraduationCap,
+    image: "/images/programme-education.jpg",
     tagline: "Quality education and market-relevant skills for all ages.",
     rationale:
       "Quality education and market-relevant skills are the surest route out of poverty and the core of NST2's human-development agenda.",
@@ -79,6 +82,7 @@ export const programmes: Programme[] = [
     name: "Talent Development",
     shortName: "Talent Development",
     icon: Trophy,
+    image: "/images/programme-talent.jpg",
     tagline: "Identifying and nurturing Gatsibo's greatest asset — its youth.",
     rationale:
       "Gatsibo's youthful population is its greatest asset. This component identifies and nurtures talent in sports, arts, innovation and enterprise.",
@@ -107,6 +111,7 @@ export const programmes: Programme[] = [
     name: "Environment & Climate Resilience",
     shortName: "Environment & Climate",
     icon: Leaf,
+    image: "/images/programme-environment.jpg",
     tagline: "Restoring landscapes and building climate-resilient livelihoods.",
     rationale:
       "Gatsibo's semi-arid climate and degraded soils threaten agricultural livelihoods. This component builds environmental resilience alongside community preparedness.",
@@ -132,6 +137,7 @@ export const programmes: Programme[] = [
     name: "Advocacy & Social Protection",
     shortName: "Advocacy & Protection",
     icon: Scale,
+    image: "/images/programme-advocacy.jpg",
     tagline: "Protecting rights and connecting the most vulnerable to services.",
     rationale:
       "Orphans, persons with disabilities and child-headed households are too often excluded from services. This component strengthens rights awareness and links vulnerable groups to protection and justice.",

@@ -4,7 +4,7 @@ import { Section } from "@/components/ui/Section";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Reveal } from "@/components/ui/Reveal";
 import { Button } from "@/components/ui/Button";
-import { PlaceholderImage } from "@/components/ui/PlaceholderImage";
+import { SiteImage } from "@/components/ui/SiteImage";
 
 export const metadata: Metadata = {
   title: "Partnerships",
@@ -84,9 +84,9 @@ export default function PartnershipsPage() {
       <Section className="bg-cream">
         <div className="grid gap-10 lg:grid-cols-2 lg:items-center">
           <Reveal>
-            <PlaceholderImage
-              label="District officials and ADESEN staff in a coordination meeting"
-              variant="gold"
+            <SiteImage
+              src="/images/coordination-meeting.jpg"
+              alt="Community development coordination meeting"
             />
           </Reveal>
           <Reveal delay={0.1}>

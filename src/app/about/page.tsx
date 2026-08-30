@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { CheckCircle2 } from "lucide-react";
 import { Section } from "@/components/ui/Section";
 import { SectionHeading } from "@/components/ui/SectionHeading";
-import { PlaceholderImage } from "@/components/ui/PlaceholderImage";
+import { SiteImage } from "@/components/ui/SiteImage";
 import { Reveal } from "@/components/ui/Reveal";
 import { org, vision, mission, coreValues } from "@/lib/data/site";
 
@@ -106,9 +106,9 @@ export default function AboutPage() {
             </div>
           </Reveal>
           <Reveal delay={0.1}>
-            <PlaceholderImage
-              label="Gatsibo District landscape and community"
-              variant="navy"
+            <SiteImage
+              src="/images/gatsibo-landscape.jpg"
+              alt="Gatsibo District landscape and community"
             />
           </Reveal>
         </div>

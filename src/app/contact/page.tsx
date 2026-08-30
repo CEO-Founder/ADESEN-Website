@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Mail, Phone, MapPin } from "lucide-react";
 import { Section } from "@/components/ui/Section";
-import { PlaceholderImage } from "@/components/ui/PlaceholderImage";
+import { SiteImage } from "@/components/ui/SiteImage";
 import { ContactForm } from "@/components/ContactForm";
 import { org } from "@/lib/data/site";
 
@@ -88,9 +88,9 @@ export default function ContactPage() {
               ) : null}
             </div>
 
-            <PlaceholderImage
-              label="ADESEN programme office location"
-              variant="forest"
+            <SiteImage
+              src="/images/office-setting.jpg"
+              alt="Office and administrative workspace"
               aspect="aspect-[4/3]"
             />
           </div>

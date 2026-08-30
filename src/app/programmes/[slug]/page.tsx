@@ -3,7 +3,7 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import { ArrowLeft, Target, ListChecks, TrendingUp } from "lucide-react";
 import { Section } from "@/components/ui/Section";
-import { PlaceholderImage } from "@/components/ui/PlaceholderImage";
+import { SiteImage } from "@/components/ui/SiteImage";
 import { Reveal } from "@/components/ui/Reveal";
 import { Button } from "@/components/ui/Button";
 import { programmes, getProgrammeBySlug } from "@/lib/data/programmes";
@@ -96,7 +96,10 @@ export default async function ProgrammeDetailPage({
       <Section className="bg-cream">
         <div className="grid gap-10 lg:grid-cols-2 lg:items-center">
           <Reveal>
-            <PlaceholderImage label={`${programme.shortName} activity in Gatsibo District`} variant="sage" icon={Icon} />
+            <SiteImage
+              src={programme.image}
+              alt={`${programme.shortName} activity in Gatsibo District`}
+            />
           </Reveal>
           <Reveal delay={0.1}>
             <h2 className="flex items-center gap-2 text-xl font-bold text-navy">
