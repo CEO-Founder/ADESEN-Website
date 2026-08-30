@@ -39,7 +39,6 @@ npm run lint    # ESLint
 4. **Replacing placeholder images.** Every photo slot renders as a branded gradient placeholder (`src/components/ui/PlaceholderImage.tsx`) labelled with what should go there (e.g. "community members in Gatsibo District"). This avoids shipping unlicensed or mismatched stock photos. To replace one:
    - Source a real ADESEN photo, or a properly licensed stock photo (Unsplash and Pexels both allow free commercial use — search their sites directly for terms like "rural Rwanda community", "African classroom", "tree planting Rwanda", "Rwandan youth").
    - Save it to `public/images/` and swap the `<PlaceholderImage ... />` usage for a Next.js `<Image src="/images/your-photo.jpg" alt="..." fill className="rounded-2xl object-cover" />` inside the same wrapper `div`.
-5. **Domain.** `siteUrl` in `src/lib/data/site.ts` is set to `https://www.adesen.rw` as a placeholder — `layout.tsx`, `sitemap.ts` and `robots.ts` all import it from there, so it only needs updating in that one place once the real domain is known.
 
 ## Wiring up the contact form
 

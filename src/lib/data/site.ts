@@ -3,12 +3,11 @@
 // 2026-2028 and Annual Report 2026. Anything marked "placeholder" is not
 // yet confirmed in the source documents and should be replaced before launch.
 
-// Placeholder — ADESEN's domain is not yet registered/confirmed. This is
-// the single source for the site's canonical URL: it feeds metadataBase in
-// layout.tsx, sitemap.ts and robots.ts, so updating the real domain here is
-// the only change needed once it's known.
-export const siteUrl = "https://www.adesen.rw";
-export const siteUrlIsPlaceholder = true;
+// Single source for the site's canonical URL: it feeds metadataBase in
+// layout.tsx, sitemap.ts and robots.ts, so this is the only place to
+// change it if the domain ever moves.
+export const siteUrl = "https://www.adesen.org";
+export const siteUrlIsPlaceholder = false;
 
 export const org = {
   shortName: "ADESEN",
