@@ -34,11 +34,12 @@ npm run lint    # ESLint
 ## Before you launch — things to confirm or replace
 
 1. **Contact details.** `src/lib/data/site.ts` has placeholder email/phone (`info@adesen.rw`, `+250 7XX XXX XXX`) — no confirmed contact details were found in the source documents. While `contact.isPlaceholder` is `true`, the site shows "to be confirmed" instead of a live `mailto:`/`tel:` link, so nobody can reach a fake address. Update the `contact` object and flip `isPlaceholder` to `false` once you have real details.
-2. **Social media links.** The `social` object in the same file points to `#` placeholders until ADESEN's accounts exist.
-3. **Logo.** The header/footer currently render a simple text + leaf-icon wordmark (`src/components/layout/Logo.tsx`). Once you have ADESEN's real logo file, drop it into `public/` and swap the contents of that component for an `<Image>` tag.
-4. **Replacing placeholder images.** Every photo slot renders as a branded gradient placeholder (`src/components/ui/PlaceholderImage.tsx`) labelled with what should go there (e.g. "community members in Gatsibo District"). This avoids shipping unlicensed or mismatched stock photos. To replace one:
+2. **Social media links.** The `social` object in `src/lib/data/site.ts` still points to `#` placeholders, so the footer's "Follow ADESEN" block stays hidden (`org.social.isPlaceholder`) until real accounts exist and the URLs are filled in.
+3. **Replacing placeholder images.** Every photo slot renders as a branded gradient placeholder (`src/components/ui/PlaceholderImage.tsx`) labelled with what should go there (e.g. "community members in Gatsibo District"). This avoids shipping unlicensed or mismatched stock photos. To replace one:
    - Source a real ADESEN photo, or a properly licensed stock photo (Unsplash and Pexels both allow free commercial use — search their sites directly for terms like "rural Rwanda community", "African classroom", "tree planting Rwanda", "Rwandan youth").
    - Save it to `public/images/` and swap the `<PlaceholderImage ... />` usage for a Next.js `<Image src="/images/your-photo.jpg" alt="..." fill className="rounded-2xl object-cover" />` inside the same wrapper `div`.
+
+The logo is done: `src/components/layout/Logo.tsx` renders ADESEN's real emblem (`public/images/adesen-logo.png`), recreated from the org's Word/PDF branding file with the "ADESEN" wordmark redrawn in place of a leftover "CRD" placeholder from the source template. The favicon and Open Graph share image still use a generated leaf mark instead (the real logo's source resolution is too low to scale up cleanly there).
 
 ## Wiring up the contact form
 

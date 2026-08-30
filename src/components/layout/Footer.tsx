@@ -42,7 +42,7 @@ export function Footer() {
     <footer className="bg-navy text-white">
       <Container className="grid gap-10 py-14 sm:grid-cols-2 lg:grid-cols-4">
         <div className="lg:col-span-1">
-          <Logo inverted />
+          <Logo />
           <p className="mt-4 text-sm leading-relaxed text-white/70">
             {org.fullName}
           </p>

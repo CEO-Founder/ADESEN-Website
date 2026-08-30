@@ -53,7 +53,7 @@ export function Header() {
   return (
     <header className="sticky top-0 z-50 border-b border-black/5 bg-white/90 backdrop-blur">
       <div className="mx-auto flex h-18 w-full max-w-7xl items-center justify-between px-5 py-3 sm:px-8">
-        <Logo />
+        <Logo priority />
 
         <nav className="hidden items-center gap-7 lg:flex" aria-label="Primary">
           {navLinks.map((link) => {
