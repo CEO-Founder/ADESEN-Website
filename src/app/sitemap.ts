@@ -1,7 +1,6 @@
 import type { MetadataRoute } from "next";
 import { programmes } from "@/lib/data/programmes";
-
-const siteUrl = "https://www.adesen.rw";
+import { siteUrl } from "@/lib/data/site";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const staticRoutes = [

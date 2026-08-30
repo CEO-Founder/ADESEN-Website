@@ -5,7 +5,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { Button } from "@/components/ui/Button";
-import { CheckCircle2 } from "lucide-react";
+import { CheckCircle2, AlertCircle } from "lucide-react";
 
 const contactSchema = z.object({
   name: z.string().min(2, "Please enter your full name"),
@@ -18,13 +18,13 @@ const contactSchema = z.object({
 type ContactFormValues = z.infer<typeof contactSchema>;
 
 /**
- * Client-side validated contact form. No backend is wired up yet —
- * on submit this currently just simulates a successful send so the UI
- * can be reviewed end to end. Before launch, replace `onSubmit`'s body
- * with a call to your email service / API route (see README).
+ * Client-side validated contact form. Submits to /api/contact, which
+ * sends via Resend — see README "Wiring up the contact form" for the
+ * RESEND_API_KEY / CONTACT_TO_EMAIL setup this depends on.
  */
 export function ContactForm() {
   const [submitted, setSubmitted] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
   const {
     register,
     handleSubmit,
@@ -36,12 +36,23 @@ export function ContactForm() {
   });
 
   async function onSubmit(values: ContactFormValues) {
-    // TODO: wire this up to a real endpoint (e.g. an API route using
-    // Resend/SendGrid, or a form service like Formspree) before launch.
-    await new Promise((resolve) => setTimeout(resolve, 600));
-    console.log("Contact form submission:", values);
-    setSubmitted(true);
-    reset();
+    setSubmitError(null);
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(values),
+      });
+      if (!res.ok) {
+        throw new Error();
+      }
+      setSubmitted(true);
+      reset();
+    } catch {
+      setSubmitError(
+        "Something went wrong sending your message. Please try again in a moment."
+      );
+    }
   }
 
   if (submitted) {
@@ -152,6 +163,16 @@ export function ContactForm() {
           </p>
         ) : null}
       </div>
+
+      {submitError ? (
+        <p
+          role="alert"
+          className="flex items-start gap-2 rounded-lg bg-red-50 px-4 py-3 text-sm text-red-700"
+        >
+          <AlertCircle className="mt-0.5 h-4 w-4 shrink-0" />
+          {submitError}
+        </p>
+      ) : null}
 
       <Button type="submit" disabled={isSubmitting} className="w-full sm:w-auto">
         {isSubmitting ? "Sending…" : "Send message"}

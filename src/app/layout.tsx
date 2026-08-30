@@ -9,8 +9,7 @@ import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { SkipLink } from "@/components/layout/SkipLink";
 import { Analytics } from "@/components/Analytics";
-
-const siteUrl = "https://www.adesen.rw";
+import { siteUrl } from "@/lib/data/site";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),

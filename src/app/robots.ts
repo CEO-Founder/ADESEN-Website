@@ -1,6 +1,5 @@
 import type { MetadataRoute } from "next";
-
-const siteUrl = "https://www.adesen.rw";
+import { siteUrl } from "@/lib/data/site";
 
 export default function robots(): MetadataRoute.Robots {
   return {

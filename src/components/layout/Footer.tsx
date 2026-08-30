@@ -48,22 +48,31 @@ export function Footer() {
                 </span>
               </span>
             </li>
-            <li className="flex items-center gap-2">
-              <Mail className="h-4 w-4 shrink-0 text-gold" />
-              <a href={`mailto:${org.contact.email}`} className="hover:text-white">
-                {org.contact.email}
-              </a>
-            </li>
-            <li className="flex items-center gap-2">
-              <Phone className="h-4 w-4 shrink-0 text-gold" />
-              <a href={`tel:${org.contact.phone}`} className="hover:text-white">
-                {org.contact.phone}
-              </a>
-            </li>
+            {org.contact.isPlaceholder ? (
+              <li className="flex items-center gap-2 text-white/50">
+                <Mail className="h-4 w-4 shrink-0 text-gold" />
+                <span>Email &amp; phone — to be confirmed</span>
+              </li>
+            ) : (
+              <>
+                <li className="flex items-center gap-2">
+                  <Mail className="h-4 w-4 shrink-0 text-gold" />
+                  <a href={`mailto:${org.contact.email}`} className="hover:text-white">
+                    {org.contact.email}
+                  </a>
+                </li>
+                <li className="flex items-center gap-2">
+                  <Phone className="h-4 w-4 shrink-0 text-gold" />
+                  <a href={`tel:${org.contact.phone}`} className="hover:text-white">
+                    {org.contact.phone}
+                  </a>
+                </li>
+              </>
+            )}
           </ul>
           {org.contact.isPlaceholder ? (
             <p className="mt-2 text-xs italic text-white/40">
-              Email and phone shown are placeholders — replace with confirmed details.
+              Email and phone aren&apos;t confirmed yet — please use the contact form instead.
             </p>
           ) : null}
         </div>

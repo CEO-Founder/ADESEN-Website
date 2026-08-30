@@ -58,23 +58,32 @@ export default function ContactPage() {
                     {org.programmeOffice.lines.join(", ")}
                   </span>
                 </li>
-                <li className="flex items-center gap-3">
-                  <Mail className="h-5 w-5 shrink-0 text-forest" />
-                  <a href={`mailto:${org.contact.email}`} className="hover:text-forest">
-                    {org.contact.email}
-                  </a>
-                </li>
-                <li className="flex items-center gap-3">
-                  <Phone className="h-5 w-5 shrink-0 text-forest" />
-                  <a href={`tel:${org.contact.phone}`} className="hover:text-forest">
-                    {org.contact.phone}
-                  </a>
-                </li>
+                {org.contact.isPlaceholder ? (
+                  <li className="flex items-center gap-3 text-ink/50">
+                    <Mail className="h-5 w-5 shrink-0 text-forest" />
+                    <span>Email &amp; phone — to be confirmed</span>
+                  </li>
+                ) : (
+                  <>
+                    <li className="flex items-center gap-3">
+                      <Mail className="h-5 w-5 shrink-0 text-forest" />
+                      <a href={`mailto:${org.contact.email}`} className="hover:text-forest">
+                        {org.contact.email}
+                      </a>
+                    </li>
+                    <li className="flex items-center gap-3">
+                      <Phone className="h-5 w-5 shrink-0 text-forest" />
+                      <a href={`tel:${org.contact.phone}`} className="hover:text-forest">
+                        {org.contact.phone}
+                      </a>
+                    </li>
+                  </>
+                )}
               </ul>
               {org.contact.isPlaceholder ? (
                 <p className="mt-3 text-xs italic text-ink/40">
-                  Email and phone shown are placeholders — replace with
-                  confirmed details before launch.
+                  Email and phone aren&apos;t confirmed yet — please use the
+                  form to reach us.
                 </p>
               ) : null}
             </div>

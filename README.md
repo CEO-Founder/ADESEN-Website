@@ -33,20 +33,24 @@ npm run lint    # ESLint
 
 ## Before you launch — things to confirm or replace
 
-1. **Contact details.** `src/lib/data/site.ts` has placeholder email/phone (`info@adesen.rw`, `+250 7XX XXX XXX`) — no confirmed contact details were found in the source documents. Update the `contact` object once you have them.
+1. **Contact details.** `src/lib/data/site.ts` has placeholder email/phone (`info@adesen.rw`, `+250 7XX XXX XXX`) — no confirmed contact details were found in the source documents. While `contact.isPlaceholder` is `true`, the site shows "to be confirmed" instead of a live `mailto:`/`tel:` link, so nobody can reach a fake address. Update the `contact` object and flip `isPlaceholder` to `false` once you have real details.
 2. **Social media links.** The `social` object in the same file points to `#` placeholders until ADESEN's accounts exist.
 3. **Logo.** The header/footer currently render a simple text + leaf-icon wordmark (`src/components/layout/Logo.tsx`). Once you have ADESEN's real logo file, drop it into `public/` and swap the contents of that component for an `<Image>` tag.
 4. **Replacing placeholder images.** Every photo slot renders as a branded gradient placeholder (`src/components/ui/PlaceholderImage.tsx`) labelled with what should go there (e.g. "community members in Gatsibo District"). This avoids shipping unlicensed or mismatched stock photos. To replace one:
    - Source a real ADESEN photo, or a properly licensed stock photo (Unsplash and Pexels both allow free commercial use — search their sites directly for terms like "rural Rwanda community", "African classroom", "tree planting Rwanda", "Rwandan youth").
    - Save it to `public/images/` and swap the `<PlaceholderImage ... />` usage for a Next.js `<Image src="/images/your-photo.jpg" alt="..." fill className="rounded-2xl object-cover" />` inside the same wrapper `div`.
-5. **Domain.** `siteUrl` is set to `https://www.adesen.rw` as a placeholder in `src/app/layout.tsx`, `src/app/sitemap.ts` and `src/app/robots.ts`. Update all three once the real domain is known.
+5. **Domain.** `siteUrl` in `src/lib/data/site.ts` is set to `https://www.adesen.rw` as a placeholder — `layout.tsx`, `sitemap.ts` and `robots.ts` all import it from there, so it only needs updating in that one place once the real domain is known.
 
 ## Wiring up the contact form
 
-`src/components/ContactForm.tsx` validates input client-side but does not currently send anywhere — `onSubmit` just logs to the console and shows a success state, so you can review the UI end to end. Before launch, pick one:
+`src/components/ContactForm.tsx` posts to `src/app/api/contact/route.ts`, which sends the message via [Resend](https://resend.com). To make it actually deliver mail:
 
-- **Email service** (recommended): create a Next.js API route (`src/app/api/contact/route.ts`) that sends the form data via [Resend](https://resend.com), SendGrid, or similar, and call it with `fetch` from `onSubmit`.
-- **Form backend**: use a hosted service like Formspree or Getform — point the form at their endpoint.
+1. Create a free account at [resend.com](https://resend.com) and generate an API key.
+2. Add `RESEND_API_KEY=re_...` to `.env.local`.
+3. Set `CONTACT_TO_EMAIL` to the address that should receive enquiries (defaults to `org.contact.email` in `src/lib/data/site.ts` if unset).
+4. Once ADESEN's domain is verified in Resend, set `CONTACT_FROM_EMAIL` to a verified address (e.g. `"ADESEN <contact@adesen.rw>"`). Until then, it falls back to Resend's shared `onboarding@resend.dev` sandbox address, which works but is rate-limited and not meant for production volume.
+
+Without `RESEND_API_KEY` set, the form fails honestly with an on-screen error rather than pretending to send.
 
 ## Analytics
 
